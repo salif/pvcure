@@ -6,8 +6,16 @@
 	let slDigitsEl = document.getElementById("slDigits")
 	let slEnEl = document.getElementById("slEn")
 	let slEnVcEl = document.getElementById("slEnVc")
+	let slEnVEl = document.getElementById("slEnV")
+	let slTrEl = document.getElementById("slTr")
+	let slTrVcEl = document.getElementById("slTrVc")
+	let slTrVEl = document.getElementById("slTrV")
+	let slEoEl = document.getElementById("slEo")
+	let slEoVcEl = document.getElementById("slEoVc")
+	let slEoVEl = document.getElementById("slEoV")
 	let slBgEl = document.getElementById("slBg")
 	let slBgVcEl = document.getElementById("slBgVc")
+	let slBgVEl = document.getElementById("slBgV")
 	let outputEl = document.getElementById("output")
 
 	function addRow(shift, output) {
@@ -49,11 +57,35 @@
 		if (slEnVcEl.checked) {
 			arr.push(L_EN_UC, L_EN_LC, L_EN_UV, L_EN_LV)
 		}
+		if (slEnVEl.checked) {
+			arr.push(L_EN_UV, L_EN_LV)
+		}
+		if (slTrEl.checked) {
+			arr.push(L_TR_U, L_TR_L)
+		}
+		if (slTrVcEl.checked) {
+			arr.push(L_TR_UC, L_TR_LC, L_TR_UV, L_TR_LV)
+		}
+		if (slTrVEl.checked) {
+			arr.push(L_TR_UV, L_TR_LV)
+		}
+		if (slEoEl.checked) {
+			arr.push(L_EO_U, L_EO_L)
+		}
+		if (slEoVcEl.checked) {
+			arr.push(L_EO_UC, L_EO_LC, L_EO_UV, L_EO_LV)
+		}
+		if (slEoVEl.checked) {
+			arr.push(L_EO_UV, L_EO_LV)
+		}
 		if (slBgEl.checked) {
 			arr.push(L_BG_U, L_BG_L)
 		}
 		if (slBgVcEl.checked) {
 			arr.push(L_BG_UC, L_BG_LC, L_BG_UV, L_BG_LV)
+		}
+		if (slBgVEl.checked) {
+			arr.push(L_BG_UV, L_BG_LV)
 		}
 		if (shiftisnEl.checked) {
 			let output = pvcure(input, n, arr)
