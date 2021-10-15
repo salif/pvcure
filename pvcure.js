@@ -1,62 +1,75 @@
-var L_DIGITS = "0123456789"
-var L_EN_U = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var L_EN_L = "abcdefghijklmnopqrstuvwxyz"
-var L_EN_UC = "BCDFGHJKLMNPQRSTVWXYZ"
-var L_EN_LC = "bcdfghjklmnpqrstvwxyz"
-var L_EN_UV = "AEIOU"
-var L_EN_LV = "aeiou"
-var L_TR_U = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
-var L_TR_L = "abcçdefgğhıijklmnoöprsştuüvyz"
-var L_TR_UC = "BCÇDFGĞHJKLMNPRSŞTVYZ"
-var L_TR_LC = "bcçdfgğhjklmnprsştvyz"
-var L_TR_UV = "AEIİOÖUÜ"
-var L_TR_LV = "aeıioöuü"
-var L_EO_U = "ABCĈDEFGĜHĤIJĴKLMNOPRSŜTUŬVZ"
-var L_EO_L = "abcĉdefgĝhĥijĵklmnoprsŝtuŭvz"
-var L_EO_UC = "BCĈDFGĜHĤJĴKLMNPRSŜTVZ"
-var L_EO_LC = "bcĉdfgĝhĥjĵklmnprsŝtvz"
-var L_EO_UV = "AEIOUŬ"
-var L_EO_LV = "aeiouŭ"
-var L_BG_U = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЮЯ"
-var L_BG_L = "абвгдежзийклмнопрстуфхцчшщъьюя"
-var L_BG_UC = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩЬ"
-var L_BG_LC = "бвгджзйклмнпрстфхцчшщь"
-var L_BG_UV = "АЕИОУЪЮЯ"
-var L_BG_LV = "аеиоуъю"
-
-var pvcure = (function () {
-
-	function add(arr, index, shift) {
-		let newIndex = index + shift
-		if (newIndex >= arr.length) {
-			while (newIndex >= arr.length) {
-				newIndex = newIndex - arr.length
-			}
-		} else if (newIndex < 0) {
-			while (newIndex < 0) {
-				newIndex = newIndex + arr.length
-			}
+var pvcure = {
+	alphabets: {
+		digits: {
+			a: "0123456789"
+		},
+		en: {
+			u: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+			l: "abcdefghijklmnopqrstuvwxyz",
+			uc: "BCDFGHJKLMNPQRSTVWXYZ",
+			lc: "bcdfghjklmnpqrstvwxyz",
+			uv: "AEIOU",
+			lv: "aeiou"
+		},
+		tr: {
+			u: "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ",
+			l: "abcçdefgğhıijklmnoöprsştuüvyz",
+			uc: "BCÇDFGĞHJKLMNPRSŞTVYZ",
+			lc: "bcçdfgğhjklmnprsştvyz",
+			uv: "AEIİOÖUÜ",
+			lv: "aeıioöuü"
+		},
+		eo: {
+			u: "ABCĈDEFGĜHĤIJĴKLMNOPRSŜTUŬVZ",
+			l: "abcĉdefgĝhĥijĵklmnoprsŝtuŭvz",
+			uc: "BCĈDFGĜHĤJĴKLMNPRSŜTVZ",
+			lc: "bcĉdfgĝhĥjĵklmnprsŝtvz",
+			uv: "AEIOUŬ",
+			lv: "aeiouŭ"
+		},
+		bg: {
+			u: "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЮЯ",
+			l: "абвгдежзийклмнопрстуфхцчшщъьюя",
+			uc: "БВГДЖЗЙКЛМНПРСТФХЦЧШЩЬ",
+			lc: "бвгджзйклмнпрстфхцчшщь",
+			uv: "АЕИОУЪЮЯ",
+			lv: "аеиоуъю"
 		}
-		return arr[newIndex]
-	}
+	},
+	pvcure: (function () {
 
-	function convert(c, shift, arr) {
-		for (let i = 0; i < arr.length; i++) {
-			let l = arr[i]
-			let index = l.indexOf(c)
-			if (index > -1) {
-				return add(l, index, shift)
+		function add(alphabet, index, shift) {
+			var newIndex = index + shift
+			if (newIndex >= alphabet.length) {
+				while (newIndex >= alphabet.length) {
+					newIndex = newIndex - alphabet.length
+				}
+			} else if (newIndex < 0) {
+				while (newIndex < 0) {
+					newIndex = newIndex + alphabet.length
+				}
 			}
+			return alphabet[newIndex]
 		}
-		return c
-	}
 
-	return function (input, shift, arr) {
-		let output = []
-		for (let i = 0; i < input.length; i++) {
-			output.push(convert(input.charAt(i), shift, arr))
+		function convert(c, shift, alphabets) {
+			for (var i = 0; i < alphabets.length; i++) {
+				var alphabet = alphabets[i]
+				var index = alphabet.indexOf(c)
+				if (index > -1) {
+					return add(alphabet, index, shift)
+				}
+			}
+			return c
 		}
-		return output.join("")
-	}
 
-})()
+		return function (input, shift, alphabets) {
+			var output = []
+			for (var i = 0; i < input.length; i++) {
+				output.push(convert(input.charAt(i), shift, alphabets))
+			}
+			return output.join("")
+		}
+
+	})()
+}

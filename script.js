@@ -1,4 +1,6 @@
-(function () {
+window.onload = function () {
+	let encodeEl = document.getElementById("encode")
+	let clearEl = document.getElementById("clear")
 	let inputEl = document.getElementById("input")
 	let nEl = document.getElementById("n")
 	let shiftisnEl = document.getElementById("shiftisn")
@@ -16,6 +18,9 @@
 	let slBgEl = document.getElementById("slBg")
 	let slBgVcEl = document.getElementById("slBgVc")
 	let slBgVEl = document.getElementById("slBgV")
+	let slCustomEl = document.getElementById("slCustom")
+	let sAlphabetEl = document.getElementById("sAlphabet")
+	let alphabetEl = document.getElementById("alphabet")
 	let outputEl = document.getElementById("output")
 
 	function addRow(shift, output) {
@@ -25,6 +30,7 @@
 		cell1.textContent = shift
 		cell2.style.whiteSpace = "pre-wrap"
 		cell2.style.fontFamily = "monospace"
+		cell2.style.overflowX = "auto"
 		cell2.textContent = output
 	}
 
@@ -34,7 +40,19 @@
 		}
 	}
 
-	document.getElementById("encode").onclick = function () {
+	function checkVisible(elm) {
+		let rect = elm.getBoundingClientRect()
+		let viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight)
+		return !(rect.bottom < 0 || rect.top - viewHeight >= 0)
+	}
+
+	function scrollToOutput() {
+		if (!checkVisible(outputEl)) {
+			outputEl.scrollIntoView(true)
+		}
+	}
+
+	encodeEl.onclick = function () {
 		clear()
 		let input = inputEl.value
 		if (input.length == 0) {
@@ -47,59 +65,75 @@
 			nEl.focus()
 			return
 		}
-		let arr = []
+		let alphabets = []
 		if (slDigitsEl.checked) {
-			arr.push(L_DIGITS)
+			alphabets.push(pvcure.alphabets.digits.a)
 		}
 		if (slEnEl.checked) {
-			arr.push(L_EN_U, L_EN_L)
+			alphabets.push(pvcure.alphabets.en.u, pvcure.alphabets.en.l)
 		}
 		if (slEnVcEl.checked) {
-			arr.push(L_EN_UC, L_EN_LC, L_EN_UV, L_EN_LV)
+			alphabets.push(pvcure.alphabets.en.uc, pvcure.alphabets.en.lc,
+				pvcure.alphabets.en.uv, pvcure.alphabets.en.lv)
 		}
 		if (slEnVEl.checked) {
-			arr.push(L_EN_UV, L_EN_LV)
+			alphabets.push(pvcure.alphabets.en.uv, pvcure.alphabets.en.lv)
 		}
 		if (slTrEl.checked) {
-			arr.push(L_TR_U, L_TR_L)
+			alphabets.push(pvcure.alphabets.tr.u, pvcure.alphabets.tr.l)
 		}
 		if (slTrVcEl.checked) {
-			arr.push(L_TR_UC, L_TR_LC, L_TR_UV, L_TR_LV)
+			alphabets.push(pvcure.alphabets.tr.uc, pvcure.alphabets.tr.lc,
+				pvcure.alphabets.tr.uv, pvcure.alphabets.tr.lv)
 		}
 		if (slTrVEl.checked) {
-			arr.push(L_TR_UV, L_TR_LV)
+			alphabets.push(pvcure.alphabets.tr.uv, pvcure.alphabets.tr.lv)
 		}
 		if (slEoEl.checked) {
-			arr.push(L_EO_U, L_EO_L)
+			alphabets.push(pvcure.alphabets.eo.u, pvcure.alphabets.eo.l)
 		}
 		if (slEoVcEl.checked) {
-			arr.push(L_EO_UC, L_EO_LC, L_EO_UV, L_EO_LV)
+			alphabets.push(pvcure.alphabets.eo.uc, pvcure.alphabets.eo.lc,
+				pvcure.alphabets.eo.uv, pvcure.alphabets.eo.lv)
 		}
 		if (slEoVEl.checked) {
-			arr.push(L_EO_UV, L_EO_LV)
+			alphabets.push(pvcure.alphabets.eo.uv, pvcure.alphabets.eo.lv)
 		}
 		if (slBgEl.checked) {
-			arr.push(L_BG_U, L_BG_L)
+			alphabets.push(pvcure.alphabets.bg.u, pvcure.alphabets.bg.l)
 		}
 		if (slBgVcEl.checked) {
-			arr.push(L_BG_UC, L_BG_LC, L_BG_UV, L_BG_LV)
+			alphabets.push(pvcure.alphabets.bg.uc, pvcure.alphabets.bg.lc,
+				pvcure.alphabets.bg.uv, pvcure.alphabets.bg.lv)
 		}
 		if (slBgVEl.checked) {
-			arr.push(L_BG_UV, L_BG_LV)
+			alphabets.push(pvcure.alphabets.bg.uv, pvcure.alphabets.bg.lv)
+		}
+		if (slCustomEl.checked) {
+			if (alphabetEl.value.length == 0) {
+				console.error("alphabet is empty")
+				alphabetEl.focus()
+				return
+			} else {
+				alphabets.push(alphabetEl.value)
+			}
 		}
 		if (shiftisnEl.checked) {
-			let output = pvcure(input, n, arr)
+			let output = pvcure.pvcure(input, n, alphabets)
 			addRow(n, output)
+			scrollToOutput()
 		} else if (shifti1tonEl.checked && n > 0) {
 			for (let i = 1; i <= n; i++) {
-				let output = pvcure(input, i, arr)
+				let output = pvcure.pvcure(input, i, alphabets)
 				addRow(i, output)
 			}
+			scrollToOutput()
 		} else if (shifti1tonEl.checked && n < 0) {
 			for (let i = -1; i >= n; i--) {
-				let output = pvcure(input, i, arr)
+				let output = pvcure.pvcure(input, i, alphabets)
 				addRow(i, output)
 			}
+			scrollToOutput()
 		} else if (n === 0) {
 			nEl.value = ""
 			nEl.focus()
@@ -110,8 +144,16 @@
 		}
 	}
 
-	document.getElementById("clear").onclick = function () {
+	clearEl.onclick = function () {
 		inputEl.value = ""
 		clear()
 	}
-})()
+
+	slCustomEl.onchange = function () {
+		if (slCustomEl.checked) {
+			sAlphabetEl.classList.remove("d-none")
+		} else {
+			sAlphabetEl.classList.add("d-none")
+		}
+	}
+}

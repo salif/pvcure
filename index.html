@@ -16,17 +16,18 @@
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 	<script src="./pvcure.js"></script>
+	<script src="./script.js"></script>
 </head>
 
 <body>
 	<div class="container">
-		<div class="p-5">
+		<div class="p-4 p-sm-5">
 			<h2>pvcure.js</h2>
 		</div>
-		<div class="mb-3 mt-3">
+		<div class="mb-3">
 			<textarea class="form-control" rows="8" id="input" placeholder="Input"></textarea>
 		</div>
-		<div class="row">
+		<div class="row mb-3">
 			<div class="col col-auto mb-3">
 				<div class="input-group">
 					<span class="input-group-text">N:</span>
@@ -113,6 +114,15 @@
 								<label class="form-check-label" for="slBgV">Bulgarian (vowels)</label>
 							</div>
 						</div>
+						<div>
+							<div class="form-check form-check-inline mt-2 mb-2">
+								<input class="form-check-input" type="checkbox" id="slCustom" value="custom" />
+								<label class="form-check-label" for="slCustom">Custom</label>
+							</div>
+							<div class="col form-check-inline d-none" id="sAlphabet">
+								<input type="text" class="form-control" id="alphabet" />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -121,15 +131,15 @@
 				<input type="button" class="btn btn-danger" id="clear" value="Clear" />
 			</div>
 		</div>
-		<div class="mt-3">
-			<table class="table table-bordered table-hover" id="output">
+		<div class="mb-3">
+			<table class="table table-bordered table-hover" style="table-layout: fixed;" id="output">
 				<tr>
-					<th class="col-1">Shift</th>
+					<th style="width: 5%;">Shift</th>
 					<th>Output</th>
 				</tr>
 			</table>
 		</div>
-		<script src="./script.js"></script>
+	</div>
 </body>
 
 </html>
