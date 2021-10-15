@@ -1,6 +1,7 @@
 window.onload = function () {
 	let encodeEl = document.getElementById("encode")
 	let clearEl = document.getElementById("clear")
+	let commentsEl = document.getElementById("comments")
 	let inputEl = document.getElementById("input")
 	let nEl = document.getElementById("n")
 	let shiftisnEl = document.getElementById("shiftisn")
@@ -22,6 +23,7 @@ window.onload = function () {
 	let sAlphabetEl = document.getElementById("sAlphabet")
 	let alphabetEl = document.getElementById("alphabet")
 	let outputEl = document.getElementById("output")
+	let commentsDivEl = document.getElementById("commentsDiv")
 
 	function addRow(shift, output) {
 		let row = outputEl.insertRow()
@@ -147,6 +149,18 @@ window.onload = function () {
 	clearEl.onclick = function () {
 		inputEl.value = ""
 		clear()
+	}
+
+	commentsEl.onclick = function () {
+		commentsEl.remove()
+		commentsDivEl.classList.remove("d-none")
+		if (!checkVisible(commentsDivEl)) {
+			commentsDivEl.scrollIntoView(true)
+		}
+		var d = document, s = d.createElement('script');
+		s.src = 'https://pvcure-salif-eu.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	}
 
 	slCustomEl.onchange = function () {
