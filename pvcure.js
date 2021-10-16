@@ -13,7 +13,11 @@ var pvcure = {
 		},
 		tr: {
 			u: "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ",
+			ua: "ABCDEFGHIJKLMNOPRSTUVYZ",
+			un: "ÇĞİÖŞÜ",
 			l: "abcçdefgğhıijklmnoöprsştuüvyz",
+			la: "abcdefghijklmnoprstuvyz",
+			ln: "çğıöşü",
 			uc: "BCÇDFGĞHJKLMNPRSŞTVYZ",
 			uca: "BCDFGHJKLMNPRSTVYZ",
 			ucn: "ÇĞŞ",
@@ -29,7 +33,11 @@ var pvcure = {
 		},
 		eo: {
 			u: "ABCĈDEFGĜHĤIJĴKLMNOPRSŜTUŬVZ",
+			ua: "ABCDEFGHIJKLMNOPRSTUVZ",
+			un: "ĈĜĤĴŜŬ",
 			l: "abcĉdefgĝhĥijĵklmnoprsŝtuŭvz",
+			la: "abcdefghijklmnoprstuvz",
+			ln: "ĉĝĥĵŝŭ",
 			uc: "BCĈDFGĜHĤJĴKLMNPRSŜTVZ",
 			uca: "BCDFGHJKLMNPRSTVZ",
 			ucn: "ĈĜĤĴŜ",

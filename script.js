@@ -13,10 +13,12 @@ window.onload = function () {
 	let slTrEl = document.getElementById("slTr")
 	let slTrVcEl = document.getElementById("slTrVc")
 	let slTrVEl = document.getElementById("slTrV")
+	let slTrAEl = document.getElementById("slTrA")
 	let slTrVcaEl = document.getElementById("slTrVca")
 	let slEoEl = document.getElementById("slEo")
 	let slEoVcEl = document.getElementById("slEoVc")
 	let slEoVEl = document.getElementById("slEoV")
+	let slEoAEl = document.getElementById("slEoA")
 	let slEoVcaEl = document.getElementById("slEoVca")
 	let slBgEl = document.getElementById("slBg")
 	let slBgVcEl = document.getElementById("slBgVc")
@@ -93,6 +95,10 @@ window.onload = function () {
 		if (slTrVEl.checked) {
 			alphabets.push(pvcure.alphabets.tr.uv, pvcure.alphabets.tr.lv)
 		}
+		if (slTrAEl.checked) {
+			alphabets.push(pvcure.alphabets.tr.ua, pvcure.alphabets.tr.un,
+				pvcure.alphabets.tr.la, pvcure.alphabets.tr.ln)
+		}
 		if (slTrVcaEl.checked) {
 			alphabets.push(pvcure.alphabets.tr.uca, pvcure.alphabets.tr.ucn,
 				pvcure.alphabets.tr.lca, pvcure.alphabets.tr.lcn,
@@ -108,6 +114,10 @@ window.onload = function () {
 		}
 		if (slEoVEl.checked) {
 			alphabets.push(pvcure.alphabets.eo.uv, pvcure.alphabets.eo.lv)
+		}
+		if (slEoAEl.checked) {
+			alphabets.push(pvcure.alphabets.eo.ua, pvcure.alphabets.eo.un,
+				pvcure.alphabets.eo.la, pvcure.alphabets.eo.ln)
 		}
 		if (slEoVcaEl.checked) {
 			alphabets.push(pvcure.alphabets.eo.uca, pvcure.alphabets.eo.ucn,
