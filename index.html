@@ -152,9 +152,44 @@
 				<input type="button" class="btn btn-danger" id="clear" value="Clear" />
 			</div>
 			<div class="col col-auto mb-3">
+				<input type="button" class="btn btn-primary" id="info" data-bs-toggle="collapse"
+					data-bs-target="#infoDiv" aria-expanded="false" aria-controls="infoDiv" value="Info" />
 				<input type="button" class="btn btn-primary" id="settings" data-bs-toggle="collapse"
 					data-bs-target="#settingsDiv" aria-expanded="false" aria-controls="settingsDiv" value="Settings" />
 				<input type="button" class="btn btn-primary" id="comments" value="Comments" />
+			</div>
+			<div class="collapse mb-3" id="infoDiv">
+				<div class="card">
+					<div class="card-body row">
+						<div class="col col-12 col-sm-6 col-md-4 col-xl-3">
+							<div class="h5 fw-bold">Info</div>
+							<ul class="list-unstyled">
+								<li>Author: <a class="text-decoration-none" href="https://github.com/salif"
+										target="_blank">Salif Mehmed</a></li>
+								<li>License: <a class="text-decoration-none"
+										href="https://github.com/salif/pvcure/blob/main/LICENSE" target="_blank">Apache
+										License 2.0</a></li>
+							</ul>
+						</div>
+						<div class="col col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+							<div class="h5 fw-bold">Source code</div>
+							<ul>
+								<li><a class="text-decoration-none" href="https://github.com/salif/pvcure"
+										target="_blank">Github</a></li>
+								<li><a class="text-decoration-none" href="https://codeberg.org/salif/pvcure"
+										target="_blank">Codeberg</a></li>
+							</ul>
+						</div>
+						<div class="col col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+							<div class="h5 fw-bold">Abbreviations</div>
+							<ul class="list-unstyled">
+								<li>a. - ASCII</li>
+								<li>v. - vowels</li>
+								<li>c. - consonants</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="collapse mb-3" id="settingsDiv">
 				<div class="card">
