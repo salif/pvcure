@@ -4,8 +4,8 @@ window.onload = function () {
 	let commentsEl = document.getElementById("comments")
 	let inputEl = document.getElementById("input")
 	let nEl = document.getElementById("n")
-	let shiftisnEl = document.getElementById("shiftisn")
-	let shifti1tonEl = document.getElementById("shifti1ton")
+	let shiftIsNEl = document.getElementById("shiftIsN")
+	let shiftIs1ToNEl = document.getElementById("shiftIs1ToN")
 	let slDigitsEl = document.getElementById("slDigits")
 	let slEnEl = document.getElementById("slEn")
 	let slEnVcEl = document.getElementById("slEnVc")
@@ -144,17 +144,17 @@ window.onload = function () {
 				alphabets.push(alphabetEl.value)
 			}
 		}
-		if (shiftisnEl.checked) {
+		if (shiftIsNEl.checked) {
 			let output = pvcure.pvcure(input, n, alphabets)
 			addRow(n, output)
 			scrollToOutput()
-		} else if (shifti1tonEl.checked && n > 0) {
+		} else if (shiftIs1ToNEl.checked && n > 0) {
 			for (let i = 1; i <= n; i++) {
 				let output = pvcure.pvcure(input, i, alphabets)
 				addRow(i, output)
 			}
 			scrollToOutput()
-		} else if (shifti1tonEl.checked && n < 0) {
+		} else if (shiftIs1ToNEl.checked && n < 0) {
 			for (let i = -1; i >= n; i--) {
 				let output = pvcure.pvcure(input, i, alphabets)
 				addRow(i, output)

@@ -44,18 +44,17 @@
 			</div>
 			<div class="col col-auto mb-3">
 				<div class="btn-group" role="group">
-					<input type="radio" class="btn-check" id="shiftisn" name="shiftis" autocomplete="off"
-						checked="checked" />
-					<label class="btn btn-outline-primary" for="shiftisn">Shift = N</label>
-					<input type="radio" class="btn-check" id="shifti1ton" name="shiftis" autocomplete="off" />
-					<label class="btn btn-outline-primary" for="shifti1ton">Shift = 1..N</label>
+					<input type="radio" class="btn-check" id="shiftIsN" name="shiftIs" checked="checked" />
+					<label class="btn btn-outline-primary" for="shiftIsn">Shift = N</label>
+					<input type="radio" class="btn-check" id="shiftIs1ToN" name="shiftIs" />
+					<label class="btn btn-outline-primary" for="shiftIs1ToN">Shift = 1..N</label>
 				</div>
 			</div>
 			<div class="col col-auto mb-3">
-				<input class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#selectl"
-					aria-expanded="false" aria-controls="selectl" value="Select" />
+				<input class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#selectDiv"
+					aria-expanded="false" aria-controls="selectDiv" value="Select" />
 			</div>
-			<div class="collapse mb-3" id="selectl">
+			<div class="collapse mb-3" id="selectDiv">
 				<div class="card">
 					<div class="card-body">
 						<div>
@@ -151,7 +150,18 @@
 			<div class="col col-auto mb-3">
 				<input type="button" class="btn btn-success" id="encode" value="Encode" />
 				<input type="button" class="btn btn-danger" id="clear" value="Clear" />
+			</div>
+			<div class="col col-auto mb-3">
+				<input type="button" class="btn btn-primary" id="settings" data-bs-toggle="collapse"
+					data-bs-target="#settingsDiv" aria-expanded="false" aria-controls="settingsDiv" value="Settings" />
 				<input type="button" class="btn btn-primary" id="comments" value="Comments" />
+			</div>
+			<div class="collapse mb-3" id="settingsDiv">
+				<div class="card">
+					<div class="card-body">
+						Not developed yet
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="mb-3">
