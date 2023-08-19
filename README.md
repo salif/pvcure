@@ -1,3 +1,3 @@
 # pvcure.js
 
-[pvcure.salif.eu](https://pvcure.salif.eu)
+[salif.github.io/pvcure](https://salif.github.io/pvcure/)

@@ -28,6 +28,8 @@ window.onload = function () {
 	let alphabetEl = document.getElementById("alphabet")
 	let outputEl = document.getElementById("output")
 	let commentsDivEl = document.getElementById("commentsDiv")
+	let pvcureSriptEl = document.getElementById("pvcureSript")
+	let pvcureScriptSrcEl = document.getElementById("pvcureSriptSrc")
 
 	function addRow(shift, output) {
 		let row = outputEl.insertRow()
@@ -178,13 +180,13 @@ window.onload = function () {
 	commentsEl.onclick = function () {
 		commentsEl.remove()
 		commentsDivEl.classList.remove("d-none")
+		let s = document.createElement('script')
+		s.setAttribute('src', 'https://pvcure-salif-eu.disqus.com/embed.js')
+		s.setAttribute('data-timestamp', +new Date())
+		document.head.appendChild(s)
 		if (!checkVisible(commentsDivEl)) {
 			commentsDivEl.scrollIntoView(true)
 		}
-		var d = document, s = d.createElement('script');
-		s.src = 'https://pvcure-salif-eu.disqus.com/embed.js';
-		s.setAttribute('data-timestamp', +new Date());
-		(d.head || d.body).appendChild(s);
 	}
 
 	slCustomEl.onchange = function () {
@@ -194,4 +196,6 @@ window.onload = function () {
 			sAlphabetEl.classList.add("d-none")
 		}
 	}
+
+	pvcureScriptSrcEl.textContent = pvcureSriptEl.src
 }
